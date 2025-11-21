@@ -1,0 +1,119 @@
+﻿@model Jobsearch.Models.LoginCls
+@{ ViewBag.Title = "Login_Pageload"; }
+
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #f4f6f8;
+        color: #333;
+    }
+
+    .login-container {
+        width: 380px;
+        margin: 80px auto;
+        padding: 30px 35px;
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        text-align: center;
+        color: #1a237e;
+        margin-bottom: 25px;
+        font-weight: 600;
+    }
+
+    label {
+        font-weight: 500;
+        color: #333;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 14px;
+        margin-top: 5px;
+        margin-bottom: 15px;
+        transition: all 0.3s ease;
+    }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: #1a237e;
+            box-shadow: 0 0 4px rgba(26, 35, 126, 0.3);
+            outline: none;
+        }
+
+    input[type="submit"] {
+        width: 100%;
+        background-color: #1a237e;
+        color: #fff;
+        padding: 10px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+        input[type="submit"]:hover {
+            background-color: #283593;
+        }
+
+    .msg {
+        text-align: center;
+        color: red;
+        margin-top: 10px;
+        font-size: 14px;
+    }
+
+    .footer-link {
+        text-align: center;
+        margin-top: 15px;
+    }
+
+        .footer-link a {
+            color: #1a237e;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+            .footer-link a:hover {
+                text-decoration: underline;
+            }
+</style>
+
+<div class="login-container">
+    <h1>Login</h1>
+
+    @using (Html.BeginForm("Login_Click", "UserLogin", FormMethod.Get))
+    {
+<div>
+    <label>Username</label>
+    @Html.TextBoxFor(m => m.Uname, new { placeholder = "Enter your username" })
+    @Html.ValidationMessageFor(m => m.Uname)
+</div>
+
+                <div>
+                    <label>Password</label>
+                    @Html.PasswordFor(m => m.password, new { placeholder = "Enter your password" })
+                    @Html.ValidationMessageFor(m => m.password)
+                </div>
+
+                                <div>
+                                    <input type="submit" value="Login" />
+                                </div>
+
+                                                <div class="msg">
+                                                    @Html.DisplayFor(m => m.msg)
+                                                </div>
+
+                                                                <div class="footer-link">
+                                                                    <p>Don't have an account? <a href="@Url.Action("InsertUser_Pageload", "UserReg")">Register here</a></p>
+                                                                </div>}
+</div>

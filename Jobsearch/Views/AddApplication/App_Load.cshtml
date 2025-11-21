@@ -1,0 +1,53 @@
+﻿@model Jobsearch.Models.JobApplication
+@{ ViewBag.Title = "Apply for Job"; }
+
+<div style="max-width: 600px; margin: 40px auto; padding: 30px; background-color: #f7f7f7; border-radius: 10px; box-shadow: 0px 0px 8px rgba(0,0,0,0.1); font-family: Arial, sans-serif;">
+    <h2 style="text-align: center; color: #003366;">Apply for this Job</h2>
+    <hr style="border: 1px solid #ddd;" />
+
+    @* Show messages *@
+    @if (ViewBag.isapplied == true)
+    {
+<div style="background-color: #ffe6e6; padding: 15px; border-radius: 5px; color: #cc0000; text-align: center;">
+    <b>You have already applied for this job.</b>
+</div> }
+            else if (ViewBag.Message != null)
+            {
+<div style="background-color: #e6ffe6; padding: 15px; border-radius: 5px; color: #006600; text-align: center;">
+    <b>@ViewBag.Message</b>
+</div> }
+            else
+            {
+                using (Html.BeginForm("App_Click", "AddApplication", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+<div style="margin-top: 20px;">
+    <label style="font-weight: bold;">Job ID:</label><br />
+    @Html.TextBoxFor(m => m.Job_id, new { @readonly = "readonly", @class = "form-control", style = "width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 5px;" })
+    @Html.HiddenFor(m => m.Job_id)
+</div>
+
+                    <div style="margin-top: 15px;">
+                        <label style="font-weight: bold;">Company ID:</label><br />
+                        @Html.TextBoxFor(m => m.Company_id, new { @readonly = "readonly", @class = "form-control", style = "width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 5px;" })
+                        @Html.HiddenFor(m => m.Company_id)
+                    </div>
+
+                                        <div style="margin-top: 15px;">
+                                            <label style="font-weight: bold;">Upload Resume:</label><br />
+                                            <input type="file" name="file" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 5px;" required />
+                                        </div>
+
+                                                            <div style="margin-top: 15px;">
+                                                                <label style="font-weight: bold;">Application Date:</label><br />
+                                                                @Html.TextBoxFor(m => m.App_Date, new { @readonly = "readonly", @class = "form-control", style = "width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 5px;" })
+                                                            </div>
+
+                                                                                <div style="text-align: center; margin-top: 25px;">
+                                                                                    <input type="submit" value="Submit Application" style="background-color: #003366; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;" />
+                                                                                </div>}
+                                                                                            }
+
+    <div style="text-align: center; margin-top: 20px;">
+        @Html.ActionLink("← Back to Job Listings", "Jobview_Pageload", "JobView", null, new { style = "color: #003366; text-decoration: none; font-weight: bold;" })
+    </div>
+</div>

@@ -1,0 +1,54 @@
+﻿@model Jobsearch.Models.JobInsertCls
+@{
+    ViewBag.Title = "JobInsert_Pageload";
+}
+
+<h1>Insert Jobs</h1>
+@using (Html.BeginForm("JobInsert_Click", "InsertJob", FormMethod.Get))
+{
+    <div>
+        <div>
+            <label>Job Role:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.jobrole)
+            @Html.ValidationMessageFor(m => m.jobrole)
+        </div>
+    </div>
+    <div>
+        <label>Skills:</label>
+    </div>
+    <div>
+        @Html.TextBoxFor(m => m.skills)
+        @Html.ValidationMessageFor(m => m.skills)
+    </div>
+    <div>
+        <label>Experience:</label>
+    </div>
+    <div>
+        @Html.TextBoxFor(m => m.exper)
+    </div>
+    <div>
+        <label>Last Date:</label>
+    </div>
+    <div>
+        @Html.TextBoxFor(m => m.ldate, new { @type = "date" })
+    </div>
+    <div>
+        <label>Location:</label>
+    </div>
+    <div>
+        @Html.TextBoxFor(m => m.location)
+    </div>
+    <div>
+        <label>Salary:</label>
+    </div>
+    <div>
+        @Html.TextBoxFor(m => m.salary)
+    </div>
+    <div>
+        <input type="submit" value="Insert" />
+        @Html.DisplayFor(m => m.msg)
+    </div>
+}
+

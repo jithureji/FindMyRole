@@ -1,0 +1,102 @@
+﻿@model Jobsearch.Models.UserInsertCls
+@{
+    ViewBag.Title = "InsertUser_Pageload";
+}
+
+<h1>User Registration</h1>
+<div>
+    @using (Html.BeginForm("InsertUser_Click", "UserReg", FormMethod.Post))
+    {
+        <div>
+            <label>Name</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.name)
+            @Html.ValidationMessageFor(m => m.name)
+        </div>
+        <div>
+            <label>Address</label>
+        </div>
+        <div>
+            @Html.TextAreaFor(m => m.address)
+            @Html.ValidationMessageFor(m => m.address)
+        </div>
+        <div>
+            <label>State</label>
+        </div>
+        <div>
+            @Html.TextAreaFor(m => m.state)
+            @Html.ValidationMessageFor(m => m.state)
+        </div>
+        <div>
+            <label>District</label>
+        </div>
+        <div>
+            @Html.TextAreaFor(m => m.district)
+            @Html.ValidationMessageFor(m => m.district)
+        </div>
+        <div>
+            <label>Phone</label>
+        </div>
+        <div>
+            @Html.TextAreaFor(m => m.phone)
+            @Html.ValidationMessageFor(m => m.phone)
+        </div>
+        <div>
+            <label>Email</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.email)
+            @Html.ValidationMessageFor(m => m.email)
+        </div>
+        <div>
+            <label>Gender</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.gender)
+        </div>
+        <div>
+            <label>Qualifiaction</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.qualifiaction)
+        </div>
+        <div>
+            <label>Experience</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.experience)
+        </div>
+        <div>
+            <label>Skills</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.skills)
+        </div>
+        <div>
+            <label>User Name</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.username)
+            @Html.ValidationMessageFor(m => m.username)
+        </div>
+        <div>
+            <label>Password:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.pass)
+        </div>
+        <div>
+            <label>confirm Password:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.cpass)
+            @Html.ValidationMessageFor(m => m.cpass)
+        </div>
+        <div>
+            <input type="submit" value="Insert" />
+            @Html.DisplayFor(m => m.usermsg)
+        </div>
+    }
+</div>
+
